@@ -1,0 +1,30 @@
+From 16bd64ba30047119edf720cba8debbf2131a51e0 Mon Sep 17 00:00:00 2001
+From: "raphael.bresson" <raphael.bresson75@gmail.com>
+Date: Sun, 6 Aug 2023 12:38:09 +0200
+Subject: [PATCH] link with libMali libudev and libexa
+
+link with libMali libudev and libexa
+---
+ src/Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index db5f110..c0fdec2 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -34,10 +34,10 @@ ERROR_CFLAGS = -Werror -Wall -Wdeclaration-after-statement -Wvla \
+ 	-Wwrite-strings -Wformat-nonliteral  -Wformat-security \
+ 	-Wold-style-definition -Winit-self -Wmissing-include-dirs \
+ 	-Waddress -Waggregate-return -Wno-multichar -Wnested-externs
+- 
++
+ AM_CFLAGS = @XORG_CFLAGS@ $(ERROR_CFLAGS)
+ armsoc_drv_la_LTLIBRARIES = armsoc_drv.la
+-armsoc_drv_la_LDFLAGS = -module -avoid-version -no-undefined
++armsoc_drv_la_LDFLAGS = -module -avoid-version -no-undefined -ludev -lMali -lexa
+ armsoc_drv_la_LIBADD = @XORG_LIBS@
+ armsoc_drv_ladir = @moduledir@/drivers
+ DRMMODE_SRCS = drmmode_exynos/drmmode_exynos.c \
+-- 
+2.30.2
+

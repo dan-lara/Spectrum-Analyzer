@@ -1,0 +1,8 @@
+
+/ {
+  axi_dma_impl_0: axi_dma_impl@0 {
+    compatible = "impl,axi-dma-impl";
+    dma-names = "loopback-tx", "loopback-rx";
+    dmas      = <&axi_dma_0 0>, <&axi_dma_0 1>;
+  };
+};

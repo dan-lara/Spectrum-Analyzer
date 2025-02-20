@@ -1,0 +1,4 @@
+source "$BR2_EXTERNAL_IMPL_PATH/package/axi-dma-driver/Config.in"
+source "$BR2_EXTERNAL_IMPL_PATH/package/axi-dma-api/Config.in"
+source "$BR2_EXTERNAL_IMPL_PATH/package/mali-userspace-binaries/Config.in"
+source "$BR2_EXTERNAL_IMPL_PATH/package/xdriver_xf86-video-armsoc/Config.in"

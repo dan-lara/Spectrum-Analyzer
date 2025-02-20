@@ -1,0 +1,5 @@
+config BR2_PACKAGE_AXI_DMA_API
+  depends on BR2_PACKAGE_AXI_DMA_DRIVER
+  bool "AXI DMA API"
+  help
+    Xilinx AXI DMA API for custom driver

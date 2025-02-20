@@ -1,0 +1,25 @@
+${QEMU_BIN} -M arm-generic-fdt-7series \
+            -machine linux=on \
+            -nographic \
+            -display none \
+            -serial null \
+            -serial mon:stdio \
+            -m 1G \
+            -gdb tcp::9000 \
+            -machine-path ${MACHINE_PATH} \
+            -device loader,addr=0xf8000008,data=0xDF0D,data-len=4 \
+	          -device loader,addr=0xf8000140,data=0x00500801,data-len=4 \
+	          -device loader,addr=0xf800012c,data=0x1ed044d,data-len=4 \
+	          -device loader,addr=0xf8000108,data=0x0001e008,data-len=4 \
+	          -device loader,addr=0xF8000910,data=0xF,data-len=4 \
+            -device loader,addr=0xF800025C,data=0x00000005,data-len=4 \
+            -device loader,addr=0xF8000240,data=0x00000000,data-len=4 \
+            -device loader,addr=0x03000000,file=${SCR},force-raw=on \
+            -device loader,addr=0x02080000,file=${KERNEL},force-raw=on \
+            -device loader,addr=0x02000000,file=${DTB},force-raw=on \
+            -device loader,addr=0x08000000,file=${INITRAMFS},force-raw=on \
+            -kernel ${UBOOT} \
+            -dtb ${DTB} \
+            -boot mode=5 \
+            -hw-dtb ${QEMU_DTB}
+

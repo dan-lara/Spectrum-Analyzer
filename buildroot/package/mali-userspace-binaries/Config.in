@@ -1,0 +1,18 @@
+config BR2_PACKAGE_MALI_USERSPACE_BINARIES
+  bool "MALI USERSPACE BINARIES"
+  select BR2_PACKAGE_HAS_LIBEGBL if !BR2_PACKAGE_GLVND
+  select BR2_PACKAGE_HAS_LIBGLES if !BR2_PACKAGE_GLVND
+  select BR2_PACKAGE_HAS_LIBGBM  if !BR2_PACKAGE_GLVND
+  help
+    Mali userspace binaries for Xilinx devices
+
+if BR2_PACKAGE_MALI_USERSPACE_BINARIES
+  config BR2_PACKAGE_PROVIDES_LIBEGL
+    default "mali-userspace-binaries"
+
+  config BR2_PACKAGE_PROVIDES_LIBGLES
+    default "mali-userspace-binaries"
+
+  config BR2_PACKAGE_PROVIDES_LIBGBM
+    default "mali-userspace-binaries"
+endif

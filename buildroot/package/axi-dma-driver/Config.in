@@ -1,0 +1,4 @@
+config BR2_PACKAGE_AXI_DMA_DRIVER
+  bool "AXI DMA DRIVER"
+  help
+    Xilinx AXI DMA custom driver
