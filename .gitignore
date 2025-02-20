@@ -1,0 +1,6 @@
+build/
+.Xil/
+.ip_user_files/
+*.jou
+
+steps.md
