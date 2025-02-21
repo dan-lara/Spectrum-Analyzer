@@ -1,0 +1,10 @@
+Dongle I2S/FFT -> DMA/DDR	Benjamin/Yedam
+VGA -> DMA/DDR 		Enki/Daniel
+
+21/02 : Lancement du projet
+28/02 : VGA/I2S
+14/03 : VGA/I2S fini en début de séance; DMA/DDR
+21/03 : DMA/DDR
+04/04 : DMA/DDR; DMA fini en fin de séance
+09/04 : Intégration
+11/02 : Rendu final/soutenance
