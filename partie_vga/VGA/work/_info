@@ -1,0 +1,69 @@
+m255
+K3
+13
+cModel Technology
+dC:\Users\enkim\Documents\EI4\S8\Architecture & Codesign\partie_vga
+Edisplaycontroller
+Z0 w1744279831
+Z1 DPx4 ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
+Z2 DPx4 ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
+Z3 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+Z4 dC:\Users\enkim\Documents\EI4\S8\Architecture & Codesign\partie_vga\VGA
+Z5 8vga.vhd
+Z6 Fvga.vhd
+l0
+L6
+VIQ8`ZMRbSN3T=3KbW<b:h0
+Z7 OV;C;6.5b;42
+31
+Z8 o-93 -O0
+Z9 tExplicit 1
+!s100 U`kmZljF]dcQd?LHNZ_R51
+Abehavioral
+R1
+R2
+R3
+DEx4 work 17 displaycontroller 0 22 IQ8`ZMRbSN3T=3KbW<b:h0
+l21
+L17
+VM06?BaSQo`;Cf>nlOO^Uj0
+!s100 OD`znRQSYNTC@5_B8R9SP2
+R7
+31
+Z10 Mx3 4 ieee 14 std_logic_1164
+Z11 Mx2 4 ieee 15 std_logic_arith
+Z12 Mx1 4 ieee 18 std_logic_unsigned
+R8
+R9
+Etb_vga
+Z13 w1744313610
+R1
+R2
+R3
+R4
+Z14 8tb_vga.vhd
+Z15 Ftb_vga.vhd
+l0
+L6
+Vj;QbY]3lfKQC?Uio_lf<W0
+!s100 HD7n]kX3e[_j<m>8;n90G2
+R7
+31
+R8
+R9
+Abehavioral
+R1
+R2
+R3
+Z16 DEx4 work 6 tb_vga 0 22 j;QbY]3lfKQC?Uio_lf<W0
+l33
+L9
+VgbQRkIYVKni122akN9Z[h0
+!s100 :BoJXIQSl5kI?5TSdCN:Q2
+R7
+31
+R10
+R11
+R12
+R8
+R9
