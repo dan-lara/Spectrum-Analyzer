@@ -29,7 +29,7 @@ begin
                 line_count <= line_count + 1;
             end if;
 
-            if (line_count < 628) then
+            if (line_count >= 628) then
                 line_count <= 0;
             end if;
             
