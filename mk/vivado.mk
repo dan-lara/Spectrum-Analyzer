@@ -20,7 +20,7 @@ ${BUILD_DIR}/vivado:
 	@mkdir -p ${BUILD_DIR}/xsim-hw_emu/log
 	@mkdir -p ${BUILD_DIR}/xsim-hw_emu/dts
 
-${BUILD_DIR}/vivado/script/synth_sources.tcl: ${SYNTH_SRC} ${PROJECT_MK} | ${BUILD_DIR}/vivado
+${BUILD_DIR}/vivado/script/synth_sources.tcl: ${SYNTH_SRC} | ${BUILD_DIR}/vivado ${BUILD_DIR}/xsim
 	@rm -f $@
 	@rm -f ${BUILD_DIR}/vivado/script/save_sources.sh
 	@rm -f ${BUILD_DIR}/vivado/script/restore_sources.sh
@@ -217,3 +217,4 @@ vivado-gui-route: ${BUILD_DIR}/vivado/dcp/route.dcp
 vivado-clean:
 	@echo "### INFO: Cleaning vivado outputs"
 	@rm -rf ${BUILD_DIR}/vivado
+

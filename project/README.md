@@ -59,3 +59,77 @@ Importing and IP
 include rtl/<ip_name>/sources.mk
 ```
 
+# Architecture
+
+```mermaid
+flowchart TD
+    subgraph PS [Système de Traitement]
+        ARM[ARM Cortex-A9]
+        SW[Logiciel de Contrôle]
+    end
+
+    subgraph PL [Logique Programmable]
+        subgraph "Chemin de Données"
+            subgraph "Capture et Tamponnage"
+                I2S[Dongle I2S]
+                DMA1[Contrôleur DMA Capture]
+                DDR1[DDR Mémoire]
+            end
+
+            subgraph "Traitement FFT"
+                DMA2[Contrôleur DMA FFT]
+                FFT[Module FFT]
+                DMA3[Contrôleur DMA Sortie FFT]
+                DDR2[DDR Buffer FFT]
+            end
+
+  
+          subgraph "Affichage"
+                DMA4[Contrôleur DMA Affichage]
+                VGA[Module VGA]
+                
+            end
+        end
+    end
+
+    %% Transferts dans le chemin de données
+    I2S --> DMA1
+    DMA1 --> DDR1
+    DDR1 --> DMA2
+    DMA2 --> FFT
+    FFT --> DMA3
+    DMA3 --> DDR2
+    DDR2 --> DMA4
+    DMA4 --> VGA
+
+    
+    IN[Signal de Entrée - Audio]
+    OUT[Signal de Sortie - Video Analog]
+    IN -.->I2S
+    VGA -.-> OUT
+
+    %% Liaisons de contrôle entre PS et PL
+    ARM --> SW
+    SW -.-> DMA1
+    SW -.-> DMA2
+    SW -.-> DMA3
+    SW -.-> DMA4
+
+```
+
+```mermaid
+flowchart LR
+    H[Composant X]
+
+    M[Composant Y]
+    subgraph "DMA-DDR"
+        
+        J[DMA]
+        K[DDR]
+        L[DMA]
+    end
+    H -- "AXI-Stream 32bits" --> J
+    K -- "AXI-MemoryMap 32bits" --> L
+    J -- "AXI-MemoryMap 32bits" --> K
+    L -- "AXI-Stream 32bits" --> M
+```

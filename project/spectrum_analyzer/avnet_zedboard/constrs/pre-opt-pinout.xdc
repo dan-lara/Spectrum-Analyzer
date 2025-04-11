@@ -68,18 +68,18 @@
 # ----------------------------------------------------------------------------
 #set_property PACKAGE_PIN AB1 [get_ports {AC_ADR0}];  # "AC-ADR0"
 #set_property PACKAGE_PIN Y5  [get_ports {AC_ADR1}];  # "AC-ADR1"
-#set_property PACKAGE_PIN Y8  [get_ports {SDATA_O}];  # "AC-GPIO0"
-#set_property PACKAGE_PIN AA7 [get_ports {SDATA_I}];  # "AC-GPIO1"
-#set_property PACKAGE_PIN AA6 [get_ports {BCLK_O}];  # "AC-GPIO2"
-#set_property PACKAGE_PIN Y6  [get_ports {LRCLK_O}];  # "AC-GPIO3"
-#set_property PACKAGE_PIN AB2 [get_ports {MCLK_O}];  # "AC-MCLK"
+set_property PACKAGE_PIN Y8  [get_ports {SDATA_O}];  # "AC-GPIO0"
+set_property PACKAGE_PIN AA7 [get_ports {SDATA_I}];  # "AC-GPIO1"
+set_property PACKAGE_PIN AA6 [get_ports {BCLK_O}];  # "AC-GPIO2"
+set_property PACKAGE_PIN Y6  [get_ports {LRCLK_O}];  # "AC-GPIO3"
+set_property PACKAGE_PIN AB2 [get_ports {MCLK_O}];  # "AC-MCLK"
 #set_property PACKAGE_PIN AB4 [get_ports {iic_rtl_scl_io}];  # "AC-SCK"
 #set_property PACKAGE_PIN AB5 [get_ports {iic_rtl_sda_io}];  # "AC-SDA"
 
 # ----------------------------------------------------------------------------
 # Clock Source - Bank 13
 # ----------------------------------------------------------------------------
-#set_property PACKAGE_PIN Y9 [get_ports {GCLK}];  # "GCLK"
+# set_property PACKAGE_PIN Y9 [get_ports {PixelClock}];  # "GCLK"
 
 # ----------------------------------------------------------------------------
 # JA Pmod - Bank 13
@@ -172,10 +172,10 @@
 # ----------------------------------------------------------------------------
 # User LEDs - Bank 33
 # ----------------------------------------------------------------------------
-set_property PACKAGE_PIN T22 [get_ports {led[0]}];  # "LD0"
-set_property PACKAGE_PIN T21 [get_ports {led[1]}];  # "LD1"
-set_property PACKAGE_PIN U22 [get_ports {led[2]}];  # "LD2"
-set_property PACKAGE_PIN U21 [get_ports {led[3]}];  # "LD3"
+#set_property PACKAGE_PIN T22 [get_ports {led[0]}];  # "LD0"
+#set_property PACKAGE_PIN T21 [get_ports {led[1]}];  # "LD1"
+#set_property PACKAGE_PIN U22 [get_ports {led[2]}];  # "LD2"
+#set_property PACKAGE_PIN U21 [get_ports {led[3]}];  # "LD3"
 #set_property PACKAGE_PIN V22 [get_ports {LD4}];  # "LD4"
 #set_property PACKAGE_PIN W22 [get_ports {LD5}];  # "LD5"
 #set_property PACKAGE_PIN U19 [get_ports {LD6}];  # "LD6"
@@ -184,20 +184,20 @@ set_property PACKAGE_PIN U21 [get_ports {led[3]}];  # "LD3"
 # ----------------------------------------------------------------------------
 # VGA Output - Bank 33
 # ----------------------------------------------------------------------------
-#set_property PACKAGE_PIN Y21  [get_ports {VGA_B1}];  # "VGA-B1"
-#set_property PACKAGE_PIN Y20  [get_ports {VGA_B2}];  # "VGA-B2"
-#set_property PACKAGE_PIN AB20 [get_ports {VGA_B3}];  # "VGA-B3"
-#set_property PACKAGE_PIN AB19 [get_ports {VGA_B4}];  # "VGA-B4"
-#set_property PACKAGE_PIN AB22 [get_ports {VGA_G1}];  # "VGA-G1"
-#set_property PACKAGE_PIN AA22 [get_ports {VGA_G2}];  # "VGA-G2"
-#set_property PACKAGE_PIN AB21 [get_ports {VGA_G3}];  # "VGA-G3"
-#set_property PACKAGE_PIN AA21 [get_ports {VGA_G4}];  # "VGA-G4"
-#set_property PACKAGE_PIN AA19 [get_ports {VGA_HS}];  # "VGA-HS"
-#set_property PACKAGE_PIN V20  [get_ports {VGA_R1}];  # "VGA-R1"
-#set_property PACKAGE_PIN U20  [get_ports {VGA_R2}];  # "VGA-R2"
-#set_property PACKAGE_PIN V19  [get_ports {VGA_R3}];  # "VGA-R3"
-#set_property PACKAGE_PIN V18  [get_ports {VGA_R4}];  # "VGA-R4"
-#set_property PACKAGE_PIN Y19  [get_ports {VGA_VS}];  # "VGA-VS"
+set_property PACKAGE_PIN Y21  [get_ports {pixel_b[0]}];  # "VGA-B1"
+set_property PACKAGE_PIN Y20  [get_ports {pixel_b[1]}];  # "VGA-B2"
+set_property PACKAGE_PIN AB20 [get_ports {pixel_b[2]}];  # "VGA-B3"
+set_property PACKAGE_PIN AB19 [get_ports {pixel_b[3]}];  # "VGA-B4"
+set_property PACKAGE_PIN AB22 [get_ports {pixel_g[0]}];  # "VGA-G1"
+set_property PACKAGE_PIN AA22 [get_ports {pixel_g[1]}];  # "VGA-G2"
+set_property PACKAGE_PIN AB21 [get_ports {pixel_g[2]}];  # "VGA-G3"
+set_property PACKAGE_PIN AA21 [get_ports {pixel_g[3]}];  # "VGA-G4"
+set_property PACKAGE_PIN AA19 [get_ports {Hsync}];      # "VGA-HS"
+set_property PACKAGE_PIN V20  [get_ports {pixel_r[0]}];  # "VGA-R1"
+set_property PACKAGE_PIN U20  [get_ports {pixel_r[1]}];  # "VGA-R2"
+set_property PACKAGE_PIN V19  [get_ports {pixel_r[2]}];  # "VGA-R3"
+set_property PACKAGE_PIN V18  [get_ports {pixel_r[3]}];  # "VGA-R4"
+set_property PACKAGE_PIN Y19  [get_ports {Vsync}];  # "VGA-VS"
 
 # ----------------------------------------------------------------------------
 # User Push Buttons - Bank 34
