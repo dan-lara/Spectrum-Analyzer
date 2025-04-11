@@ -31,13 +31,25 @@ entity spectrum_analyzer_top is
         FIXED_IO_ps_clk : inout STD_LOGIC;
         FIXED_IO_ps_porb : inout STD_LOGIC;
         FIXED_IO_ps_srstb : inout STD_LOGIC;
-        led : out std_logic_vector(3 downto 0)
+        led : out std_logic_vector(3 downto 0);
+        vga_data       : out std_logic_vector(31 downto 0);
+        vga_ready      : in std_logic;
+        vga_valid      : out std_logic;
+        vga_tlast      : out std_logic;
+        
       );
 end entity;
 
 architecture top_arch of spectrum_analyzer_top is
   signal aclk_0 : std_logic;
   signal aresetn_0 : std_logic_vector(0 downto 0);
+  signal vga_clk : std_logic;
+  signal i2s_clk : std_logic;
+  signal pixel_r : std_logic_vector(3 downto 0);
+  signal pixel_g : std_logic_vector(3 downto 0);
+  signal pixel_b : std_logic_vector(3 downto 0);
+  signal Hsync : std_logic;
+  signal Vsync : std_logic;
 begin
 ------ l'instanciation suivante doit être actualisée en fonction du fichier build/vivado/build/hdl/design_1_wrapper.vhd (qui représente le block design)
 bd_inst: entity work.design_1_wrapper
@@ -63,13 +75,51 @@ bd_inst: entity work.design_1_wrapper
             FIXED_IO_ps_porb => FIXED_IO_ps_porb,
             FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
             aclk_0 => aclk_0,
-            aresetn_0 => aresetn_0
+
+            aresetn_0 => aresetn_0,
+            led(3 downto 0) => led(3 downto 0),
+            vga_valid        => vga_valid_i,
+            vga_last         => vga_last,
+            vga_data         => vga_tdata,
+            vga_ready        => vga_ready
           );
+
+          vga_data  <= vga_tdata;
+          vga_valid <= vga_valid_i;
+          vga_tlast <= vga_last;
 
 -- Vos entités doivent être instanciées ici
 -- ici par exemple un compteur sortant sur des leds
-simple_led_example: led_blink
-  port map ( clk => aclk_0
-           , rsn => aresetn_0(0)
-           , led => led);
-end architecture;
+-- simple_led_example: led_blink
+--   port map ( clk => aclk_0
+--            , rsn => aresetn_0(0)
+--            , led => led);
+-- end architecture;
+
+TopDisplaySystem_inst: entity work.TopDisplaySystem
+  port map(
+    PixelClock => vga_clk,
+    vga_valid  => vga_valid_i,
+    vga_last   => vga_last,
+    vga_tdata  => vga_tdata,
+    vga_ready  => vga_ready,
+    Vsync      => Vsync,
+    Hsync      => Hsync,
+    pixel_r    => pixel_r,
+    pixel_g    => pixel_g,
+    pixel_b    => pixel_b
+  );
+
+i2s_to_axi_inst: entity work.i2s_to_axi
+  port map(
+    MCLK      => i2s_clk,       -- Using vga_clk as the master clock
+    DIN       => '0',           -- Placeholder for serial data input
+    AXI_READY => i2s_ready,     -- Connecting AXI ready signal
+
+    LRCLK     => open,          -- Left/Right clock not connected
+    SCLK      => open,          -- Serial clock not connected
+
+    AXI_TDATA => vga_data,     -- Connecting AXI data output
+    AXI_TVALID=> i2s_valid,   -- Connecting AXI valid signal
+    AXI_TLAST => vga_tlast       -- Connecting AXI last signal
+  );
